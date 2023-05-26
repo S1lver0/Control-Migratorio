@@ -64,7 +64,7 @@
                 <div class="col">
                     <div class=" col-md-12">
                         <label for="Nombre_p">Nombres y Apellidos</label>
-                        <input type="text" class="form-control input-pasajero" id="Nombre_p" placeholder="" required>
+                        <input type="text" class="form-control input-pasajero" id="id_Nombre_P" placeholder="" required>
                     </div>
                     <div class=" col-md-12">
                         <label for="Nacionalidad">Nacionalidad</label>
@@ -72,7 +72,7 @@
                         <div class="wrapper">
                             <div class="select-btn ">
                                 <!-- <input type="text" class="form-control input-pasajero" id="inputPassword4" list="paises" placeholder="Elija el pais" required> -->
-                                <span class="form-control ">Seleccione una pais</span>
+                                <span id="id_Nacionalidad_P" class="form-control ">Seleccione un pais</span>
                                 <i class="uil uil-angle-down"></i>
                             </div>
 
@@ -86,9 +86,9 @@
                         </div>
                     </div>
                     <div class=" col-md-12">
-                        <label for="tipo_de _documento_de_identidad">Estado Civil</label>
+                        <label for="tipo_de_documento_de_identidad">Estado Civil</label>
                         <div class="col-sm-12">
-                            <select id="tipo_de _documento_de_identidad" class=" form-control input-pasajero" required>
+                            <select id="id_EstadoCivil_P" class=" form-control input-pasajero" required>
                                 <option value="" disabled="" selected>Seleccione una opcion</option>
                                 <option value="Auto">Soltero/a</option>
                                 <option value="Camioneta">Casado/a</option>
@@ -102,7 +102,7 @@
                     <div class=" col-md-12">
                         <label for="Profesion">Profesión</label>
                         <div class="col-sm-12">
-                            <select id="Profesion" class=" form-control input-pasajero" required>
+                            <select id="id_Profesion_P" class=" form-control input-pasajero" required>
                                 <option value="" disabled="" selected>Seleccione una profesión</option>
                                 <option value="Actor/actriz">Actor/actriz</option>
                                 <option value="Administrador/a de empresas">Administrador/a de empresas</option>
@@ -156,9 +156,8 @@
 
                     <div class="row">
                         <div class=" col-md-6">
-                            <label for="tipo_de _documento_de_identidad">Documento de identidad</label>
-
-                            <select id="tipo_de _documento_de_identidad" class="form-control input-pasajero">
+                            <label for="tipo_de_documento_de_identidad">Documento de identidad</label>
+                            <select id="id_DNI_P" class="form-control input-pasajero">
                                 <option value="" disabled="" selected>Seleccione un tipo</option>
                                 <option value="dni">DNI</option>
                                 <option value="carnet-extranjeria">Carnet de extranjeria</option>
@@ -168,19 +167,49 @@
 
                         <div class=" col-md-6">
                             <label for="Numero"></label>
-                            <input type="text" class="form-control input-pasajero" id="Numero"
-                                placeholder="Numero De Documento" required>
+                            <input type="text" class="form-control input-pasajero" id="id_NumeroDNI_P"
+                                placeholder="Numero De Documento" required disabled>
                         </div>
+                        <script>
+                            var dniSelect = document.getElementById('id_DNI_P');
+                            var numeroDNIInput = document.getElementById('id_NumeroDNI_P');
+                        
+                            dniSelect.addEventListener('change', function() {
+                                var selectedValue = dniSelect.value;
+                                if (selectedValue !== 'Seleccione un tipo') {
+                                    numeroDNIInput.disabled = false;
+                                } else {
+                                    numeroDNIInput.disabled = true;
+                                    numeroDNIInput.value = '';
+                                }
+                            });
+                        </script>
                     </div>
-
+                    <script>
+                        document.getElementById('id_DNI_P').addEventListener('change', function() {
+                            var numeroDocumentoInput = document.getElementById('id_NumeroDNI_P');
+                            var tipoDocumento = this.value;
+                            
+                            if (tipoDocumento === 'dni') {
+                                numeroDocumentoInput.setAttribute('maxlength', '8');
+                            } else if (tipoDocumento === 'carnet-extranjeria') {
+                                numeroDocumentoInput.setAttribute('maxlength', '12');
+                            } else if (tipoDocumento === 'pasaporte') {
+                                numeroDocumentoInput.setAttribute('maxlength', '12');
+                            } else {
+                                numeroDocumentoInput.removeAttribute('maxlength');
+                            }
+                        });
+                    </script>
+                    
                     <div class=" col-md-12">
                         <label for="Nacimiento">Fecha de Nacimiento</label>
-                        <input type="date" class="form-control input-pasajero" id="Nacimiento" placeholder="" required>
+                        <input type="date" class="form-control input-pasajero" id="id_Nacimiento_P" placeholder="" required min="1900-01-01" max="9999-12-31">
                     </div>
                 </div>
 
                 <div class="boton">
-                    <button type="submit" class="btn btn-success" onclick="getPass()">Agregar</button>
+                    <button class="btn btn-success" onclick="agregarPasajero()">Agregar</button>
                 </div>
             </form>
         </div>
