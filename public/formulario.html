@@ -12,6 +12,8 @@
     <script src="https://kit.fontawesome.com/c4691aa0a3.js" crossorigin="anonymous"></script>
     <title>CONTROL MIGRATORIO</title>
     <!--Version 2.0-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
 </head>
 
 <body>
@@ -90,12 +92,12 @@
                         <div class="col-sm-12">
                             <select id="id_EstadoCivil_P" class=" form-control input-pasajero" required>
                                 <option value="" disabled="" selected>Seleccione una opcion</option>
-                                <option value="Auto">Soltero/a</option>
-                                <option value="Camioneta">Casado/a</option>
-                                <option value="Combi">Conviviente</option>
-                                <option value="Moto">Viudo/a</option>
-                                <option value="Combi">Divorciado/a</option>
-                                <option value="Moto">Separado/a</option>
+                                <option value="Soltero">Soltero</option>
+                                <option value="Casado">Casado</option>
+                                <option value="Conviviente">Conviviente</option>
+                                <option value="Viudo">Viudo</option>
+                                <option value="Divorciado">Divorciado</option>
+                                <option value="Separado">Separado</option>
                             </select>
                         </div>
                     </div>
@@ -207,11 +209,10 @@
                         <input type="date" class="form-control input-pasajero" id="id_Nacimiento_P" placeholder="" required min="1900-01-01" max="9999-12-31">
                     </div>
                 </div>
-
-                <div class="boton">
-                    <button class="btn btn-success" onclick="agregarPasajero()">Agregar</button>
-                </div>
             </form>
+            <div class="boton">
+                <button class="btn btn-success" onclick="agregarPasajero()">Agregar</button>
+            </div>
         </div>
 
         <div class="container item2">
@@ -434,79 +435,27 @@
     <br>
     <br>
 
-    <div class="container table-resp">
-        <table class="table table-striped ">
+    <div id="tablares"class="container table-resp">
+        <table  class="table table-striped " >
             <thead>
                 <tr>
-                    <th scope="col">#</th>
                     <th scope="col">Nombres y apellidos</th>
                     <th scope="col">Nacionalidad</th>
                     <th scope="col">Estado Civil</th>
                     <th scope="col">Profesión</th>
                     <th scope="col">F. Nacimiento</th>
-                    <th scope="col">DNI</th>
+                    <th scope="col">N° Documento de Identidad</th>
                     <th scope="col">Opciones</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Frank aldair chaparro perca</td>
-                    <td>Venezolano</td>
-                    <td>Casado</td>
-                    <td>Ingeniero Minero</td>
-                    <td>01/15/2023</td>
-                    <td>789456123</td>
-                    <td>
-                        <button class="">
-                            <i class="fa-regular fa-pen-to-square" style="color: black;"></i>
-                        </button>
-                        <button>
-                            <i class="fa-solid fa-trash-can" style="color: #de3112;"></i>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Diego Coaquira Romero</td>
-                    <td>Boliviano</td>
-                    <td>Viudo</td>
-                    <td>Repartidor</td>
-                    <td>05/12/2005</td>
-                    <td>71154819</td>
-                    <td>
-                        <button class="">
-                            <i class="fa-regular fa-pen-to-square" style="color: black;"></i>
-                        </button>
-                        <button>
-                            <i class="fa-solid fa-trash-can" style="color: #de3112;"></i>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Sofia Meneses Garcia</td>
-                    <td>Peruana</td>
-                    <td>Casada</td>
-                    <td>Abogado</td>
-                    <td>25/05/2000</td>
-                    <td>78176294</td>
-                    <td>
-                        <button class="">
-                            <i class="fa-regular fa-pen-to-square" style="color: black;"></i>
-                        </button>
-                        <button>
-                            <i class="fa-solid fa-trash-can" style="color: #de3112;"></i>
-                        </button>
-                    </td>
-                </tr>
+            <tbody id="addTable">
             </tbody>
         </table>
     </div>
 
     <div class="boton boton-fin">
         <button type="button" class="btn btn-success btn-final-1">Generar Ficha</button>
-        <button type="button" class="btn btn-danger btn-final-2">Eliminar</button>
+        <button onclick="deleteAllTable()" type="button" class="btn btn-danger btn-final-2">Eliminar</button>
     </div>
 
 
@@ -552,9 +501,6 @@
         <!-- Copyright -->
     </footer>
     <script src="js/passTable.js"></script>
-
-
-
 
 
 </body>
