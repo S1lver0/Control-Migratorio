@@ -1,509 +1,615 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <script src="https://kit.fontawesome.com/c4691aa0a3.js" crossorigin="anonymous"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/c4691aa0a3.js"
+      crossorigin="anonymous"
+    ></script>
     <title>CONTROL MIGRATORIO</title>
     <!--Version 2.0-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css"
+    />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <div class="container">
-            <nav class=" navbar-light">
-                <a class="navbar-brand" href="#">
-                    <div class="fotos">
-                        <img src="img/escudo.png" width="80" height="90" class="d-inline-block align-top escudo" alt="">
-                        <img src="img/rayo.png" width="125" height="90" class="d-inline-block align-top rayo" alt="">
-                    </div>
-
-                </a>
-                <h1 class="align-middle">RELACION PASAJEROS</h1>
-            </nav>
-        </div>
+      <div class="container">
+        <nav class="navbar-light">
+          <a class="navbar-brand" href="#">
+            <div class="fotos">
+              <img
+                src="img/escudo.png"
+                width="80"
+                height="90"
+                class="d-inline-block align-top escudo"
+                alt=""
+              />
+              <img
+                src="img/rayo.png"
+                width="125"
+                height="90"
+                class="d-inline-block align-top rayo"
+                alt=""
+              />
+            </div>
+          </a>
+          <h1 class="align-middle">RELACION PASAJEROS</h1>
+        </nav>
+      </div>
     </header>
 
-    <div class="container caja-datos sombra">
+    <div id="cabe" class="container caja-datos sombra">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <label for="fechaActual">Fecha</label>
+          <input type="date" class="form-control" id="fechaActual" />
+        </div>
+        <div class="col-md-6">
+          <label for="inputDestino">Destino</label>
+          <select id="Destino" class="form-control input-pasajero" required>
+            <option value="" disabled="" selected>Seleccione una opción</option>
+            <option value="Tacna">Tacna</option>
+            <option value="Arica">Arica</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <label for="inputProcedencia">Procedencia</label>
+          <select id="Procedencia" class="form-control input-pasajero" required>
+            <option value="" disabled="" selected>Seleccione una opción</option>
+            <option value="Tacna">Tacna</option>
+            <option value="Arica">Arica</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="Poliza">Polizá(Opcional)</label>
+          <input
+            type="text"
+            class="form-control input-pasajero"
+            id="poliza"
+            placeholder="Ingrese N° poliza en caso de tener"
+          />
+        </div>
+      </div>
+    </div>
+
+    <br />
+    <br />
+
+    <div class="container ordenar-grid sombra-grid">
+      <div class="container fila-doble item1">
+        <div id="passForm">
+          <h2>Pasajeros</h2>
+          <div class="col">
+            <div class="col-md-12">
+              <label for="Nombre_p">Nombres y Apellidos</label>
+              <input
+                type="text"
+                class="form-control input-pasajero"
+                id="id_Nombre_P"
+                placeholder=""
+                required
+              />
+            </div>
+            <div class="col-md-12">
+              <label for="Nacionalidad">Nacionalidad</label>
+              <!--<input type="text" class="form-control input-pasajero" id="inputPassword4" list="paises" placeholder=""required>-->
+              <div class="wrapper">
+                <div class="select-btn">
+                  <!-- <input type="text" class="form-control input-pasajero" id="inputPassword4" list="paises" placeholder="Elija el pais" required> -->
+                  <span id="id_Nacionalidad_P" class="form-control"
+                    >Seleccione un pais</span
+                  >
+                  <i class="uil uil-angle-down"></i>
+                </div>
+
+                <div class="content">
+                  <div class="search">
+                    <i class="uil uil-search"></i>
+                    <input
+                      spellcheck="false"
+                      type="text"
+                      placeholder="Search"
+                    />
+                  </div>
+                  <ul class="options"></ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <label for="tipo_de_documento_de_identidad">Estado Civil</label>
+              <div class="col-sm-12">
+                <select
+                  id="id_EstadoCivil_P"
+                  class="form-control input-pasajero"
+                  required
+                >
+                  <option value="" disabled="" selected>
+                    Seleccione una opcion
+                  </option>
+                  <option value="Soltero">Soltero</option>
+                  <option value="Casado">Casado</option>
+                  <option value="Conviviente">Conviviente</option>
+                  <option value="Viudo">Viudo</option>
+                  <option value="Divorciado">Divorciado</option>
+                  <option value="Separado">Separado</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <label for="Profesion">Profesión</label>
+              <div class="col-sm-12">
+                <select
+                  id="id_Profesion_P"
+                  class="form-control input-pasajero"
+                  required
+                >
+                  <option value="" disabled="" selected>
+                    Seleccione una profesión
+                  </option>
+                  <option value="Actor/actriz">Actor/actriz</option>
+                  <option value="Administrador/a de empresas">
+                    Administrador/a de empresas
+                  </option>
+                  <option value="Agricultor/a">Agricultor/a</option>
+                  <option value="Arquitecto/a">Arquitecto/a</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <label for="tipo_de_documento_de_identidad"
+                  >Documento de identidad</label
+                >
+                <select id="id_DNI_P" class="form-control input-pasajero">
+                  <option value="" disabled="" selected>
+                    Seleccione un tipo
+                  </option>
+                  <option value="dni">DNI</option>
+                  <option value="carnet-extranjeria">
+                    Carnet de extranjeria
+                  </option>
+                  <option value="pasaporte">Pasaporte</option>
+                </select>
+              </div>
+
+              <div class="col-md-6">
+                <label for="Numero"></label>
+                <input
+                  type="text"
+                  class="form-control input-pasajero"
+                  id="id_NumeroDNI_P"
+                  placeholder="Numero De Documento"
+                  required
+                  disabled
+                />
+              </div>
+              <script>
+                var dniSelect = document.getElementById("id_DNI_P");
+                var numeroDNIInput = document.getElementById("id_NumeroDNI_P");
+
+                dniSelect.addEventListener("change", function () {
+                  var selectedValue = dniSelect.value;
+                  if (selectedValue !== "Seleccione un tipo") {
+                    numeroDNIInput.disabled = false;
+                  } else {
+                    numeroDNIInput.disabled = true;
+                    numeroDNIInput.value = "";
+                  }
+                });
+              </script>
+            </div>
+            <script>
+              document
+                .getElementById("id_DNI_P")
+                .addEventListener("change", function () {
+                  var numeroDocumentoInput =
+                    document.getElementById("id_NumeroDNI_P");
+                  var tipoDocumento = this.value;
+
+                  if (tipoDocumento === "dni") {
+                    numeroDocumentoInput.setAttribute("maxlength", "8");
+                  } else if (tipoDocumento === "carnet-extranjeria") {
+                    numeroDocumentoInput.setAttribute("maxlength", "12");
+                  } else if (tipoDocumento === "pasaporte") {
+                    numeroDocumentoInput.setAttribute("maxlength", "12");
+                  } else {
+                    numeroDocumentoInput.removeAttribute("maxlength");
+                  }
+                });
+            </script>
+
+            <div class="col-md-12">
+              <label for="Nacimiento">Fecha de Nacimiento</label>
+              <input
+                type="date"
+                class="form-control input-pasajero"
+                id="id_Nacimiento_P"
+                placeholder=""
+                required
+                min="1900-01-01"
+                max="9999-12-31"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="boton">
+          <button class="btn btn-success" onclick="agregarPasajero()">
+            Agregar
+          </button>
+        </div>
+      </div>
+
+      <div id="vehi1" class="container item2">
+        <h2>Vehiculo</h2>
         <div class="row">
-            <div class=" col-md-6 col-sm-12">
-                <label for="fechaActual">Fecha</label>
-                <input type="date" class="form-control" id="fechaActual">
+          <div class="row col-md-6">
+            <label for="Tipo" class="col-sm-3 col-form-label">Tipo</label>
+            <div class="col-sm-9">
+              <select id="Tipo" class="form-control input-pasajero" required>
+                <option value="" disabled="" selected>
+                  Seleccione una opcion
+                </option>
+                <option value="auto">Automóvil</option>
+                <option value="autobus">Autobus</option>
+                <option value="moto">Motocicleta</option>
+                <option value="camioneta">Camioneta</option>
+                <option value="camion">Camión</option>
+              </select>
             </div>
-            <div class=" col-md-6">
-                <label for="inputDestino">Destino</label>
-                <input type="text" class="form-control" id="inputDestino" placeholder="">
+          </div>
+          <div class="row col-md-6">
+            <label for="Marca" class="col-sm-3 col-form-label">Marca</label>
+            <div class="col-sm-9">
+              <input
+                type="text"
+                class="form-control input-vehiculo"
+                id="Marca"
+                placeholder=""
+                required
+              />
             </div>
+          </div>
         </div>
 
         <div class="row">
-            <div class=" col-md-6 col-sm-12">
-                <label for="inputProcedencia">Procedencia</label>
-                <input type="text" class="form-control" id="inputProcedencia" placeholder="">
+          <div class="row col-md-6">
+            <label for="Modelo" class="col-sm-3 col-form-label">Modelo</label>
+            <div class="col-sm-9">
+              <input
+                type="text"
+                class="form-control input-vehiculo"
+                id="Modelo"
+                placeholder=""
+                required
+              />
             </div>
-            <div class=" col-md-6">
-                <label for="Poliza">Polizá</label>
-                <input type="text" class="form-control" id="Poliza" placeholder="">
+          </div>
+          <div class="row col-md-6">
+            <label for="Año" class="col-sm-3 col-form-label">Año</label>
+            <div class="col-sm-9">
+              <input
+                type="text"
+                pattern="[0-9]*"
+                class="form-control input-vehiculo"
+                maxlength="4"
+                id="Año"
+                placeholder=""
+                required
+              />
             </div>
+          </div>
         </div>
+
+        <div class="row">
+          <div class="row col-md-6">
+            <label for="Motor" class="col-sm-3 col-form-label">Motor</label>
+            <div class="col-sm-9">
+              <input
+                type="text"
+                class="form-control input-vehiculo"
+                id="Motor"
+                placeholder=""
+                required
+              />
+            </div>
+          </div>
+          <div class="row col-md-6">
+            <label for="Chasis" class="col-sm-3 col-form-label">Chasis</label>
+            <div class="col-sm-9">
+              <input
+                type="text"
+                class="form-control input-vehiculo"
+                id="Chasis"
+                placeholder=""
+                required
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row col-md-6">
+            <label for="Placa" class="col-sm-3 col-form-label">Placa</label>
+            <div class="col-sm-9">
+              <input
+                type="text"
+                class="form-control input-vehiculo"
+                id="Placa"
+                placeholder=""
+                required
+              />
+            </div>
+          </div>
+          <div class="row col-md-6">
+            <label for="Pais" class="col-sm-3 col-form-label">Pais</label>
+            <div class="col-sm-9">
+              <div class="wrapper3">
+                <div class="select-btn3">
+                  <!-- <input type="text" class="form-control input-pasajero" id="inputPassword4" list="paises" placeholder="Elija el pais" required> -->
+                  <span class="form-control" id="Pais_Vehiculo"
+                    >Seleccione un pais</span
+                  >
+                  <i class="uil uil-angle-down"></i>
+                </div>
+
+                <div class="content3">
+                  <div class="search">
+                    <i class="uil uil-search"></i>
+                    <input
+                      spellcheck="false"
+                      type="text"
+                      placeholder="Search"
+                    />
+                  </div>
+                  <ul class="options3"></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="driver" class="container div-vehiculo item3">
+        <h2>Conductor</h2>
+        <div class="col">
+          <div class="row col-md-12">
+            <label for="NombreC" class="col-sm-2 col-form-label">Nombre</label>
+            <div class="col-sm-9">
+              <input
+                type="text"
+                class="form-control input-conductor"
+                id="MombreC"
+                placeholder=""
+                required
+              />
+            </div>
+          </div>
+
+          <div class="row col-md-12">
+            <label for="Domicilio" class="col-sm-2 col-form-label"
+              >Domicilio</label
+            >
+            <div class="col-sm-9">
+              <input
+                type="text"
+                class="form-control input-conductor"
+                id="Domicilio"
+                placeholder=""
+                required
+              />
+            </div>
+          </div>
+
+          <div class="row col-md-12">
+            <label for="Profesion1" class="col-sm-2 col-form-label"
+              >Profesion</label
+            >
+            <div class="col-sm-9">
+              <select
+                id="Profesion1"
+                class="form-control input-pasajero"
+                required
+              >
+                <option value="" disabled="" selected>
+                  Seleccione una profesión
+                </option>
+                <option value="Actor/actriz">Actor/actriz</option>
+                <option value="Administrador/a de empresas">
+                  Administrador/a de empresas
+                </option>
+                <option value="Agricultor/a">Agricultor/a</option>
+                <option value="Arquitecto/a">Arquitecto/a</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row col-md-12">
+            <label for="Nacionalidad" class="col-sm-2 col-form-label"
+              >Nacionalidad</label
+            >
+            <div class="col-sm-9">
+              <div class="wrapper2">
+                <div class="select-btn2">
+                  <!-- <input type="text" class="form-control input-pasajero" id="inputPassword4" list="paises" placeholder="Elija el pais" required> -->
+                  <span class="form-control" id="Pais_Conductor"
+                    >Selecccione una pais</span
+                  >
+                  <i class="uil uil-angle-down"></i>
+                </div>
+
+                <div class="content2">
+                  <div class="search">
+                    <i class="uil uil-search"></i>
+                    <input
+                      spellcheck="false"
+                      type="text"
+                      placeholder="Search"
+                    />
+                  </div>
+                  <ul class="options2"></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="row col-md-4">
+              <label for="Brevete" class="col-sm-3 col-form-label lbl-conductor"
+                >Brevete</label
+              >
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  class="form-control input-conductor"
+                  id="Brevete"
+                  placeholder=""
+                  required
+                />
+              </div>
+            </div>
+            <div class="row col-md-4">
+              <label
+                for="Fecha Nacimiento"
+                class="col-sm-3 col-form-label lbl-conductor"
+                >Fecha Nac</label
+              >
+              <div class="col-sm-9">
+                <input
+                  type="date"
+                  class="form-control input-conductor lbl-fecha-nac"
+                  id="Fecha_Nacimiento"
+                  placeholder=""
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="row col-md-4">
+              <label for="SC/PP" class="col-sm-3 col-form-label lbl-conductor"
+                >SC/PP</label
+              >
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  class="form-control input-conductor"
+                  id="sc_pp"
+                  placeholder=""
+                  required
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <br>
-    <br>
+    <br />
+    <br />
 
-    <div class="container  ordenar-grid sombra-grid">
-        <div class="container fila-doble item1">
-            <form id="passForm">
-                <h2>Pasajeros</h2>
-                <div class="col">
-                    <div class=" col-md-12">
-                        <label for="Nombre_p">Nombres y Apellidos</label>
-                        <input type="text" class="form-control input-pasajero" id="id_Nombre_P" placeholder="" required>
-                    </div>
-                    <div class=" col-md-12">
-                        <label for="Nacionalidad">Nacionalidad</label>
-                        <!--<input type="text" class="form-control input-pasajero" id="inputPassword4" list="paises" placeholder=""required>-->
-                        <div class="wrapper">
-                            <div class="select-btn ">
-                                <!-- <input type="text" class="form-control input-pasajero" id="inputPassword4" list="paises" placeholder="Elija el pais" required> -->
-                                <span id="id_Nacionalidad_P" class="form-control ">Seleccione un pais</span>
-                                <i class="uil uil-angle-down"></i>
-                            </div>
-
-                            <div class="content">
-                                <div class="search">
-                                    <i class="uil uil-search"></i>
-                                    <input spellcheck="false" type="text" placeholder="Search">
-                                </div>
-                                <ul class="options"></ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class=" col-md-12">
-                        <label for="tipo_de_documento_de_identidad">Estado Civil</label>
-                        <div class="col-sm-12">
-                            <select id="id_EstadoCivil_P" class=" form-control input-pasajero" required>
-                                <option value="" disabled="" selected>Seleccione una opcion</option>
-                                <option value="Soltero">Soltero</option>
-                                <option value="Casado">Casado</option>
-                                <option value="Conviviente">Conviviente</option>
-                                <option value="Viudo">Viudo</option>
-                                <option value="Divorciado">Divorciado</option>
-                                <option value="Separado">Separado</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class=" col-md-12">
-                        <label for="Profesion">Profesión</label>
-                        <div class="col-sm-12">
-                            <select id="id_Profesion_P" class=" form-control input-pasajero" required>
-                                <option value="" disabled="" selected>Seleccione una profesión</option>
-                                <option value="Actor/actriz">Actor/actriz</option>
-                                <option value="Administrador/a de empresas">Administrador/a de empresas</option>
-                                <option value="Agricultor/a">Agricultor/a</option>
-                                <option value="Arquitecto/a">Arquitecto/a</option>
-                                <option value="Artista">Artista</option>
-                                <option value="Asistente social">Asistente social</option>
-                                <option value="Atleta">Atleta</option>
-                                <option value="Biólogo/a">Biólogo/a</option>
-                                <option value="Cajero/a">Cajero/a</option>
-                                <option value="Carpintero/a">Carpintero/a</option>
-                                <option value="Chef/cocinero/a">Chef/cocinero/a</option>
-                                <option value="Comunicador/a social">Comunicador/a social</option>
-                                <option value="Contador/a">Conductor/a</option>
-                                <option value="Contador/a">Contador/a</option>
-                                <option value="Científico/a">Científico/a</option>
-                                <option value="Comerciante">Comerciante/a</option>
-                                <option value="Dentista">Dentista</option>
-                                <option value="Diseñador/a gráfico">Diseñador/a gráfico</option>
-                                <option value="Doctor/a">Doctor/a</option>
-                                <option value="Electricista">Electricista</option>
-                                <option value="Enfermero/a">Enfermero/a</option>
-                                <option value="Empleado">Empleado/a</option>
-                                <option value="Escritor/a">Escritor/a</option>
-                                <option value="Estudiante">Estudiante/a</option>
-                                <option value="Farmacéutico/a">Farmacéutico/a</option>
-                                <option value="Fotógrafo/a">Fotógrafo/a</option>
-                                <option value="Físico/a">Físico/a</option>
-                                <option value="Geólogo/a">Geólogo/a</option>
-                                <option value="Ingeniero/a">Ingeniero/a</option>
-                                <option value="Jardinero/a">Jardinero/a</option>
-                                <option value="Juez/a">Juez/a</option>
-                                <option value="Mecánico/a">Mecánico/a</option>
-                                <option value="Músico/a">Músico/a</option>
-                                <option value="Periodista">Periodista</option>
-                                <option value="Pintor/a">Pintor/a</option>
-                                <option value="Plomero/a">Plomero/a</option>
-                                <option value="Profesor/a">Profesor/a</option>
-                                <option value="Psicólogo/a">Psicólogo/a</option>
-                                <option value="Reparador/a de automóviles">Reparador/a de automóviles</option>
-                                <option value="Soldador/a">Soldador/a</option>
-                                <option value="Técnico/a en informática">Técnico/a en informática</option>
-                                <option value="Terapeuta">Terapeuta</option>
-                                <option value="Traductor/a">Traductor/a</option>
-                                <option value="Vendedor/a">Vendedor/a</option>
-                                <option value="Veterinario/a">Veterinario/a</option>
-                                <option value="Zapatero/a">Zapatero/a</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class=" col-md-6">
-                            <label for="tipo_de_documento_de_identidad">Documento de identidad</label>
-                            <select id="id_DNI_P" class="form-control input-pasajero">
-                                <option value="" disabled="" selected>Seleccione un tipo</option>
-                                <option value="dni">DNI</option>
-                                <option value="carnet-extranjeria">Carnet de extranjeria</option>
-                                <option value="pasaporte">Pasaporte</option>
-                            </select>
-                        </div>
-
-                        <div class=" col-md-6">
-                            <label for="Numero"></label>
-                            <input type="text" class="form-control input-pasajero" id="id_NumeroDNI_P"
-                                placeholder="Numero De Documento" required disabled>
-                        </div>
-                        <script>
-                            var dniSelect = document.getElementById('id_DNI_P');
-                            var numeroDNIInput = document.getElementById('id_NumeroDNI_P');
-                        
-                            dniSelect.addEventListener('change', function() {
-                                var selectedValue = dniSelect.value;
-                                if (selectedValue !== 'Seleccione un tipo') {
-                                    numeroDNIInput.disabled = false;
-                                } else {
-                                    numeroDNIInput.disabled = true;
-                                    numeroDNIInput.value = '';
-                                }
-                            });
-                        </script>
-                    </div>
-                    <script>
-                        document.getElementById('id_DNI_P').addEventListener('change', function() {
-                            var numeroDocumentoInput = document.getElementById('id_NumeroDNI_P');
-                            var tipoDocumento = this.value;
-                            
-                            if (tipoDocumento === 'dni') {
-                                numeroDocumentoInput.setAttribute('maxlength', '8');
-                            } else if (tipoDocumento === 'carnet-extranjeria') {
-                                numeroDocumentoInput.setAttribute('maxlength', '12');
-                            } else if (tipoDocumento === 'pasaporte') {
-                                numeroDocumentoInput.setAttribute('maxlength', '12');
-                            } else {
-                                numeroDocumentoInput.removeAttribute('maxlength');
-                            }
-                        });
-                    </script>
-                    
-                    <div class=" col-md-12">
-                        <label for="Nacimiento">Fecha de Nacimiento</label>
-                        <input type="date" class="form-control input-pasajero" id="id_Nacimiento_P" placeholder="" required min="1900-01-01" max="9999-12-31">
-                    </div>
-                </div>
-            </form>
-            <div class="boton">
-                <button class="btn btn-success" onclick="agregarPasajero()">Agregar</button>
-            </div>
-        </div>
-
-        <div class="container item2">
-            <h2>Vehiculo</h2>
-            <div class="row">
-                <div class="row col-md-6">
-                    <label for="Tipo" class="col-sm-3 col-form-label">Tipo</label>
-                    <div class="col-sm-9">
-                        <select id="Tipo" class=" form-control input-pasajero" required>
-                            <option value="" disabled="" selected>Seleccione una opcion</option>
-                            <option value="auto">Automóvil</option>
-                            <option value="autobus">Autobus</option>
-                            <option value="moto">Motocicleta</option>
-                            <option value="camioneta">Camioneta</option>
-                            <option value="camion">Camión</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row col-md-6">
-                    <label for="Marca" class="col-sm-3 col-form-label">Marca</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control input-vehiculo" id="Marca" placeholder="" required>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="row col-md-6">
-                    <label for="Modelo" class="col-sm-3 col-form-label">Modelo</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control input-vehiculo" id="Modelo" placeholder="" required>
-                    </div>
-                </div>
-                <div class="row col-md-6">
-                    <label for="Año" class="col-sm-3 col-form-label">Año</label>
-                    <div class="col-sm-9">
-                        <input type="text" pattern="[0-9]*" class="form-control input-vehiculo" maxlength="4" id="Año"
-                            placeholder="" required>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="row col-md-6">
-                    <label for="Motor" class="col-sm-3 col-form-label">Motor</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control input-vehiculo" id="Motor" placeholder="" required>
-                    </div>
-                </div>
-                <div class="row col-md-6">
-                    <label for="Chasis" class="col-sm-3 col-form-label">Chasis</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control input-vehiculo " id="Chasis" placeholder="" required>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="row col-md-6">
-                    <label for="Placa" class="col-sm-3 col-form-label">Placa</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control input-vehiculo" id="Placa" placeholder="" required>
-                    </div>
-                </div>
-                <div class="row col-md-6">
-                    <label for="Pais" class="col-sm-3 col-form-label">Pais</label>
-                    <div class="col-sm-9">
-
-                        <div class="wrapper3">
-                            <div class="select-btn3">
-                                <!-- <input type="text" class="form-control input-pasajero" id="inputPassword4" list="paises" placeholder="Elija el pais" required> -->
-                                <span class="form-control ">Seleccione una pais</span>
-                                <i class="uil uil-angle-down"></i>
-                            </div>
-
-                            <div class="content3">
-                                <div class="search">
-                                    <i class="uil uil-search"></i>
-                                    <input spellcheck="false" type="text" placeholder="Search">
-                                </div>
-                                <ul class="options3"></ul>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="container div-vehiculo item3">
-            <h2>Conductor</h2>
-            <div class="col">
-                <div class="row col-md-12">
-                    <label for="NombreC" class="col-sm-2 col-form-label">Nombre</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control input-conductor" id="MombreC" placeholder="" required>
-                    </div>
-                </div>
-
-                <div class="row col-md-12">
-                    <label for="Domicilio" class="col-sm-2 col-form-label">Domicilio</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control input-conductor" id="Domicilio" placeholder="" required>
-                    </div>
-                </div>
-
-                <div class="row col-md-12">
-                    <label for="Profesion1" class="col-sm-2 col-form-label">Profesion</label>
-                    <div class="col-sm-9">
-                        <select id="Profesion1" class=" form-control input-pasajero" required>
-                            <option value="" disabled="" selected>Seleccione una profesión</option>
-                            <option value="Actor/actriz">Actor/actriz</option>
-                            <option value="Administrador/a de empresas">Administrador/a de empresas</option>
-                            <option value="Agricultor/a">Agricultor/a</option>
-                            <option value="Arquitecto/a">Arquitecto/a</option>
-                            <option value="Artista">Artista</option>
-                            <option value="Asistente social">Asistente social</option>
-                            <option value="Atleta">Atleta</option>
-                            <option value="Biólogo/a">Biólogo/a</option>
-                            <option value="Cajero/a">Cajero/a</option>
-                            <option value="Carpintero/a">Carpintero/a</option>
-                            <option value="Chef/cocinero/a">Chef/cocinero/a</option>
-                            <option value="Comunicador/a social">Comunicador/a social</option>
-                            <option value="Contador/a">Conductor/a</option>
-                            <option value="Contador/a">Contador/a</option>
-                            <option value="Científico/a">Científico/a</option>
-                            <option value="Comerciante">Comerciante/a</option>
-                            <option value="Dentista">Dentista</option>
-                            <option value="Diseñador/a gráfico">Diseñador/a gráfico</option>
-                            <option value="Doctor/a">Doctor/a</option>
-                            <option value="Electricista">Electricista</option>
-                            <option value="Enfermero/a">Enfermero/a</option>
-                            <option value="Empleado">Empleado/a</option>
-                            <option value="Escritor/a">Escritor/a</option>
-                            <option value="Estudiante">Estudiante/a</option>
-                            <option value="Farmacéutico/a">Farmacéutico/a</option>
-                            <option value="Fotógrafo/a">Fotógrafo/a</option>
-                            <option value="Físico/a">Físico/a</option>
-                            <option value="Geólogo/a">Geólogo/a</option>
-                            <option value="Ingeniero/a">Ingeniero/a</option>
-                            <option value="Jardinero/a">Jardinero/a</option>
-                            <option value="Juez/a">Juez/a</option>
-                            <option value="Mecánico/a">Mecánico/a</option>
-                            <option value="Músico/a">Músico/a</option>
-                            <option value="Periodista">Periodista</option>
-                            <option value="Pintor/a">Pintor/a</option>
-                            <option value="Plomero/a">Plomero/a</option>
-                            <option value="Profesor/a">Profesor/a</option>
-                            <option value="Psicólogo/a">Psicólogo/a</option>
-                            <option value="Reparador/a de automóviles">Reparador/a de automóviles</option>
-                            <option value="Soldador/a">Soldador/a</option>
-                            <option value="Técnico/a en informática">Técnico/a en informática</option>
-                            <option value="Terapeuta">Terapeuta</option>
-                            <option value="Traductor/a">Traductor/a</option>
-                            <option value="Vendedor/a">Vendedor/a</option>
-                            <option value="Veterinario/a">Veterinario/a</option>
-                            <option value="Zapatero/a">Zapatero/a</option>
-                            <option value="Meretriz/a">Zapatero/a</option>
-
-
-                            <option value="Zapatero/a">Trabajo Domestico</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="row col-md-12">
-                    <label for="Nacionalidad" class="col-sm-2 col-form-label">Nacionalidad</label>
-                    <div class="col-sm-9">
-
-                        <div class="wrapper2">
-                            <div class="select-btn2">
-                                <!-- <input type="text" class="form-control input-pasajero" id="inputPassword4" list="paises" placeholder="Elija el pais" required> -->
-                                <span class="form-control " ">Selecccione una pais</span>
-                                    <i class=" uil uil-angle-down"></i>
-                            </div>
-
-                            <div class="content2">
-                                <div class="search">
-                                    <i class="uil uil-search"></i>
-                                    <input spellcheck="false" type="text" placeholder="Search">
-                                </div>
-                                <ul class="options2"></ul>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="row col-md-4">
-                        <label for="Brevete" class="col-sm-3 col-form-label lbl-conductor">Brevete</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control input-conductor" id="Brevete" placeholder=""
-                                required>
-                        </div>
-                    </div>
-                    <div class="row col-md-4">
-                        <label for="Fecha Nacimiento" class="col-sm-3 col-form-label lbl-conductor">Fecha
-                            Nac</label>
-                        <div class="col-sm-9">
-                            <input type="date" class="form-control input-conductor lbl-fecha-nac" id="Fecha Nacimiento"
-                                placeholder="" required>
-                        </div>
-                    </div>
-
-                    <div class="row col-md-4">
-                        <label for="SC/PP" class="col-sm-3 col-form-label lbl-conductor"">SC/PP</label>
-                            <div class=" col-sm-9">
-                            <input type="text" class="form-control input-conductor" id="sc/pp" placeholder="" required>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    </div>
-
-    <br>
-    <br>
-
-    <div id="tablares"class="container table-resp">
-        <table  class="table table-striped " >
-            <thead>
-                <tr>
-                    <th scope="col">Nombres y apellidos</th>
-                    <th scope="col">Nacionalidad</th>
-                    <th scope="col">Estado Civil</th>
-                    <th scope="col">Profesión</th>
-                    <th scope="col">F. Nacimiento</th>
-                    <th scope="col">N° Documento de Identidad</th>
-                    <th scope="col">Opciones</th>
-                </tr>
-            </thead>
-            <tbody id="addTable">
-            </tbody>
-        </table>
+    <div id="tablares" class="container table-resp">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Nombres y apellidos</th>
+            <th scope="col">Nacionalidad</th>
+            <th scope="col">Estado Civil</th>
+            <th scope="col">Profesión</th>
+            <th scope="col">F. Nacimiento</th>
+            <th scope="col">N° Documento de Identidad</th>
+            <th scope="col">Opciones</th>
+          </tr>
+        </thead>
+        <tbody id="addTable"></tbody>
+      </table>
     </div>
 
     <div class="boton boton-fin">
-        <button type="button" class="btn btn-success btn-final-1">Generar Ficha</button>
-        <button onclick="deleteAllTable()" type="button" class="btn btn-danger btn-final-2">Eliminar</button>
+      <button onclick="valiAll()" class="btn btn-success btn-final-1">
+        Generar Ficha
+      </button>
+      <button
+        onclick="deleteAllTable()"
+        type="button"
+        class="btn btn-danger btn-final-2"
+      >
+        Eliminar
+      </button>
     </div>
-
 
     <script src="js/countries.js"></script>
 
     <footer class="bg-footer text-white text-center text-lg-start">
-        <!-- Grid container -->
-        <div class="container p-4 cont-footer">
-            <!--Grid row-->
-            <div class="row">
-                <!--Grid column-->
-                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">Contáctenos <br>
-                        Oficina Principal:</h5>
-                    <p>
-                        Carretera Panamericana Sur Km. 1336,Tacna - Perú
-                    </p>
-                    <a href="https://www.google.com.pe/maps/dir//Complejo+Fronterizo+Santa+Rosa,+1S,+Per%C3%BA/@-18.2682442,-70.419614,11z/data=!4m8!4m7!1m0!1m5!1m1!1s0x915ab1e99aa13d8d:0xc2dcd452401b56a0!2m2!1d-70.3145013!2d-18.3072508"
-                        target="_blank"><button class="btn-footer">Ver mapa</button></a>
-                </div>
+      <!-- Grid container -->
+      <div class="container p-4 cont-footer">
+        <!--Grid row-->
+        <div class="row">
+          <!--Grid column-->
+          <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+            <h5 class="text-uppercase">
+              Contáctenos <br />
+              Oficina Principal:
+            </h5>
+            <p>Carretera Panamericana Sur Km. 1336,Tacna - Perú</p>
+            <a
+              href="https://www.google.com.pe/maps/dir//Complejo+Fronterizo+Santa+Rosa,+1S,+Per%C3%BA/@-18.2682442,-70.419614,11z/data=!4m8!4m7!1m0!1m5!1m1!1s0x915ab1e99aa13d8d:0xc2dcd452401b56a0!2m2!1d-70.3145013!2d-18.3072508"
+              target="_blank"
+              ><button class="btn-footer">Ver mapa</button></a
+            >
+          </div>
 
-                <!--Grid column-->
-                <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">Teléfonos:</h5>
-                    <p>052 - 583120</p>
-                    <h5 class="text-uppercase">E-mail:</h5>
-                    <a class="footer-email" href="https://complejosantarosa.sunat.gob.pe/email"
-                        target="_blank">jefatura_starosa@sunat.gob.pe</a>
-                </div>
-                <!--Grid column-->
+          <!--Grid column-->
+          <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase">Teléfonos:</h5>
+            <p>052 - 583120</p>
+            <h5 class="text-uppercase">E-mail:</h5>
+            <a
+              class="footer-email"
+              href="https://complejosantarosa.sunat.gob.pe/email"
+              target="_blank"
+              >jefatura_starosa@sunat.gob.pe</a
+            >
+          </div>
+          <!--Grid column-->
 
-                <!--Grid column-->
+          <!--Grid column-->
 
-                <!--Grid column-->
-            </div>
+          <!--Grid column-->
         </div>
+      </div>
 
-        <!-- Copyright -->
-        <div class="text-center p-3">
-            © Todos los Derechos Reservados 2023 - Copyright :
-            <a class="text-white" href="https://github.com/dcoaquirar" target="_blank">Diego Coaquira Romero</a>
-        </div>
-        <!-- Copyright -->
+      <!-- Copyright -->
+      <div class="text-center p-3">
+        © Todos los Derechos Reservados 2023 - Copyright :
+        <a
+          class="text-white"
+          href="https://github.com/dcoaquirar"
+          target="_blank"
+          >Lucho Coaquira Romero</a
+        >
+      </div>
+      <!-- Copyright -->
     </footer>
     <script src="js/passTable.js"></script>
-
-
-</body>
-
-
+  </body>
 </html>
