@@ -29,9 +29,9 @@ $tipo_di = "1";
 $sql = "INSERT INTO di (Numero,Tipo) VALUES ('$Di_con','$tipo_di')";
 
 if (mysqli_query($conex, $sql)) {
-    echo "Datos insertados correctamente.";
+    //echo "Datos insertados correctamente.";
 } else {
-    echo "Error al insertar datos: " . mysqli_error($conex);
+    //echo "Error al insertar datos: " . mysqli_error($conex);
 }
 /////////////////////////////////////////////////////////////////
 
@@ -39,9 +39,9 @@ $sql = "INSERT INTO conductor (Di_conductor, Nombre, FNam, domicilio, pais, prof
 
 
 if (mysqli_query($conex, $sql)) {
-    echo "Datos insertados correctamente.";
+    //echo "Datos insertados correctamente.";
 } else {
-    echo "Error al insertar datos: " . mysqli_error($conex);
+    //echo "Error al insertar datos: " . mysqli_error($conex);
 }
 
 
@@ -62,9 +62,9 @@ $tipo = $jsonData['car']['tipo'];
 $modelo_name = $jsonData['car']['modelo'];
 $sql = "INSERT INTO modelo (Id,Nombre) VALUES ('$modelo','$modelo_name')";
 if (mysqli_query($conex, $sql)) {
-    echo "Datos insertados correctamente.";
+    //echo "Datos insertados correctamente.";
 } else {
-    echo "Error al insertar datos: " . mysqli_error($conex);
+    //echo "Error al insertar datos: " . mysqli_error($conex);
 }
 
 
@@ -72,26 +72,26 @@ if (mysqli_query($conex, $sql)) {
 $motor_name = $jsonData['car']['motor'];
 $sql = "INSERT INTO motor (Id,Nombre) VALUES ('$motor','$motor_name')";
 if (mysqli_query($conex, $sql)) {
-    echo "Datos insertados correctamente.";
+    //echo "Datos insertados correctamente.";
 } else {
-    echo "Error al insertar datos: " . mysqli_error($conex);
+    //echo "Error al insertar datos: " . mysqli_error($conex);
 }
 
 //tabla marca
 $marca_name = $jsonData['car']['marca'];
 $sql = "INSERT INTO marca (Id,Nombre) VALUES ('$marca','$marca_name')";
 if (mysqli_query($conex, $sql)) {
-    echo "Datos insertados correctamente.";
+    //echo "Datos insertados correctamente.";
 } else {
-    echo "Error al insertar datos: " . mysqli_error($conex);
+    //echo "Error al insertar datos: " . mysqli_error($conex);
 }
 //tabla Chasis
 $chasis_name = $jsonData['car']['chasis'];
 $sql = "INSERT INTO chasis (Id,Nombre) VALUES ('$chasis','$chasis_name')";
 if (mysqli_query($conex, $sql)) {
-    echo "Datos insertados correctamente.";
+    //echo "Datos insertados correctamente.";
 } else {
-    echo "Error al insertar datos: " . mysqli_error($conex);
+    //echo "Error al insertar datos: " . mysqli_error($conex);
 }
 
 
@@ -99,9 +99,9 @@ $sql = "INSERT INTO vehiculo (Placa, Anio, Modelo, Motor, Marca, Chasis, Tipo_Ve
 
 
 if (mysqli_query($conex, $sql)) {
-    echo "Datos insertados correctamente.";
+    //echo "Datos insertados correctamente.";
 } else {
-    echo "Error al insertar datos: " . mysqli_error($conex);
+    //echo "Error al insertar datos: " . mysqli_error($conex);
 }
 
 
@@ -118,12 +118,10 @@ if (is_string($pasajeros_cantidad)) {
 $sql = "INSERT INTO registro (codigo, fecha, procedencia, destino, vehiculo, poliza, conductor) VALUES ('$idRegi','$fecha','$procedencia','$destino','$placa','$poliza','$Di_con')";
 // Ejecutar la sentencia INSERT
 if (mysqli_query($conex, $sql)) {
-    echo "Datos insertados correctamente.";
+    //echo "Datos insertados correctamente.";
 } else {
-    echo "Error al insertar datos: " . mysqli_error($conex);
+    //echo "Error al insertar datos: " . mysqli_error($conex);
 }
-
-
 
 
 for ($i = 0; $i < $pasajeros_cantidad; $i++) {
@@ -139,9 +137,9 @@ for ($i = 0; $i < $pasajeros_cantidad; $i++) {
     $sql = "INSERT INTO di (Numero,Tipo) VALUES ('$DI_Numero','$tipo_di')";
 
     if (mysqli_query($conex, $sql)) {
-        echo "Datos insertados correctamente.";
+        //echo "Datos insertados correctamente.";
     } else {
-        echo "Error al insertar datos: " . mysqli_error($conex);
+        //echo "Error al insertar datos: " . mysqli_error($conex);
     }
 
 
@@ -149,9 +147,9 @@ for ($i = 0; $i < $pasajeros_cantidad; $i++) {
 
 
     if (mysqli_query($conex, $sql)) {
-        echo "Datos insertados correctamente.";
+        //echo "Datos insertados correctamente.";
     } else {
-        echo "Error al insertar datos: " . mysqli_error($conex);
+        //echo "Error al insertar datos: " . mysqli_error($conex);
     }
 
     //llenamos la tabla detalle
@@ -159,9 +157,9 @@ for ($i = 0; $i < $pasajeros_cantidad; $i++) {
     $sql = "INSERT INTO detalle (id,registro,pasajeros) VALUES ('$id_detalle','$idRegi','$DI_Numero')";
 
     if (mysqli_query($conex, $sql)) {
-        echo "Datos insertados correctamente.";
+        //echo "Datos insertados correctamente.";
     } else {
-        echo "Error al insertar datos: " . mysqli_error($conex);
+        //echo "Error al insertar datos: " . mysqli_error($conex);
     }
 
 }

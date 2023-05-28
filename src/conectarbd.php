@@ -1,8 +1,8 @@
 <?php
 // Declaramos las variables de conexión
-$ServerName = "bqpsx6amf5io0herhaig-mysql.services.clever-cloud.com";
-$Username = "u3jy8btetduo65xc";
-$Password ="ODzjGmTbkJoRqSRvJcEK";
+$ServerName = "-mysql..clever-cloud.com";
+$Username = "";
+$Password ="";
 $NameBD = "bqpsx6amf5io0herhaig";
 
 // Creamos la conexión con MySQL

@@ -26,6 +26,12 @@
       href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css"
     />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
+
+    <!--PDF PDF PDF SE AGREGO-->
+    <!--Inclusion libreria jspdf para generar el PDF-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
   </head>
 
   <body>
@@ -254,7 +260,11 @@
           </div>
         </div>
         <div class="boton">
-          <button class="btn btn-success" onclick="agregarPasajero()">
+          <button
+            id="btn_agregarPasajero"
+            class="btn btn-success"
+            onclick="agregarPasajero()"
+          >
             Agregar
           </button>
         </div>
@@ -420,11 +430,9 @@
               />
             </div>
           </div>
-          
+
           <div class="row col-md-12">
-            <label for="Di" class="col-sm-2 col-form-label"
-              >Di</label
-            >
+            <label for="Di" class="col-sm-2 col-form-label">Di</label>
             <div class="col-sm-9">
               <input
                 type="text"
@@ -560,10 +568,15 @@
     </div>
 
     <div class="boton boton-fin">
-      <button onclick="valiAll()" class="btn btn-success btn-final-1">
+      <button
+        id="btn_generarFicha"
+        onclick="valiAll()"
+        class="btn btn-success btn-final-1"
+      >
         Generar Ficha
       </button>
       <button
+        id="btn_eliminar"
         onclick="deleteAllTable()"
         type="button"
         class="btn btn-danger btn-final-2"
@@ -627,4 +640,5 @@
     </footer>
     <script src="js/passTable.js"></script>
   </body>
+  <div id="qrcode"></div>
 </html>
