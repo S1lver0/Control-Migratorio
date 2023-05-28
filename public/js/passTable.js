@@ -1,10 +1,12 @@
-//objetos
+//objetos global
 var pasajeros = [];
 var car;
 var ini;
 var driver;
-////
-var conteo=0;
+//// global
+var IdQR;
+var conteo = 0;
+//////////
 
 function agregarPasajero() {
   var nombre_apellidos = document.getElementById("id_Nombre_P").value;
@@ -164,6 +166,22 @@ function agregarPasajero() {
       break;
   }
 
+  var tipoDi;
+  switch (DNI) {
+    case "dni":
+      tipoDi = 1;
+      break;
+    case "carnet-extranjeria":
+      tipoDi = 2;
+      break;
+    case "pasaporte":
+      tipoDi = 3;
+      break;
+    default:
+      tipoDi = 1;
+      break;
+  }
+
   //--
   pass = {
     nombre: campos[0],
@@ -174,7 +192,8 @@ function agregarPasajero() {
     fecha: campos[6],
     select_estado: select_estado,
     select_nacionalidad: select_nacionalidad,
-    select_profesion:select_profesion
+    select_profesion: select_profesion,
+    tipoDi: tipoDi,
   };
   pasajeros.push(pass);
   addTable();
@@ -222,6 +241,7 @@ function deleteRow(button) {
   });
 
   console.log(pasajeros);
+  conteo--;
 }
 
 function deleteAllTable() {
@@ -229,6 +249,7 @@ function deleteAllTable() {
   tbody.innerHTML = "";
   pasajeros = [];
   console.log(pasajeros);
+  conteo = 0;
 }
 
 function limpiarCampos() {
@@ -293,18 +314,17 @@ function valiAll() {
     Conductor.querySelector("#Profesion1").value == "" ||
     Conductor.querySelector("#Brevete").value == "" ||
     Conductor.querySelector("#Fecha_Nacimiento").value == "" ||
-    Conductor.querySelector("#sc_pp").value == ""
+    Conductor.querySelector("#sc_pp").value == ""||
+    Conductor.querySelector("#Di").value == ""
   ) {
     mensaje_Adv(
       "Por favor, complete todos los campos requeridos antes de generar ficha"
     );
     return;
   }
-  if(conteo==0){
-    mensaje_Adv(
-      "Tiene que ingresar al menos un pasajero"
-    );
-  }else{
+  if (conteo == 0) {
+    mensaje_Adv("Tiene que ingresar al menos un pasajero");
+  } else {
     addObj();
   }
 }
@@ -420,6 +440,7 @@ function addObj() {
     brevete: Conductor.querySelector("#Brevete").value,
     fecha_na: Conductor.querySelector("#Fecha_Nacimiento").value,
     scpp: Conductor.querySelector("#sc_pp").value,
+    di : Conductor.querySelector("#Di").value
   };
 
   console.log(ini);
@@ -428,15 +449,31 @@ function addObj() {
   GenerarJson();
 }
 
-function GenerarJson(){
+function GenerarJson() {
   var ObjAll = {
-    pasajeros:pasajeros,
-    car:car,
-    driver:driver,
-    ini:ini
-  }
+    pasajeros: pasajeros,
+    car: car,
+    driver: driver,
+    ini: ini,
+    cantidad_pasajeros: conteo,
+  };
   console.log(ObjAll);
+
+  // Realizar la solicitud POST
+  fetch("../src/json.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(ObjAll),
+  })
+    .then((response) => response.text())
+    .then((data) => {
+      // Imprimir la respuesta del servidor(servidor retorna ID UNICO )
+      IdQR = data;
+      console.log(IdQR);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
 }
-
-
-
